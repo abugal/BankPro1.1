@@ -6,6 +6,7 @@ const path = require('path');
 const genLedgerRoutes = require("./routes/genLedger");
 const depositRoutes = require("./routes/deposit");
 const userRoutes = require("./routes/user");
+const PORT = process.env.port || 3000
 
 // initialise the express App
 const app = express();
@@ -42,8 +43,8 @@ mongoose
   .then(() => {
     // Listen for a request in a certain port number.
     // through the use of the .env
-    app.listen(process.env.PORT, () => {
-      console.log("connect to MongoDB and listening on port", process.env.PORT);
+    app.listen(PORT, async () => {
+      console.log(`connect to MongoDB and listening on port ${PORT}`);
     });
   })
   .catch((error) => {
